@@ -1,0 +1,57 @@
+$themes: (
+    "dark": (
+        background-main: #494b4e,
+        background-aside: #151517,
+        text-main: #f0f0f0,
+        details: #f0f0f0,
+    ),
+    "light": (
+        background-main: #ffffff,
+        background-aside: #e8e8e8,
+        text-main: #0c0c0c,
+        details: #151517,
+    )
+);
+
+body {
+    background-color: map-get(map-get($themes, "dark"), background-main);
+    color: map-get(map-get($themes, "dark"), text-main);
+}
+
+aside {
+    background-color: map-get(map-get($themes, "dark"), background-aside);
+}
+
+hr {
+    background-color: rgba(map-get(map-get($themes, "dark"), details), 0.5);
+}
+
+@mixin themify($themeName) {
+    $background-main: map-get($themeName, background-main);
+    $background-aside: map-get($themeName, background-aside);
+    $text-main: map-get($themeName, text-main);
+    $details: map-get($themeName, details);
+
+    input, select {
+        background-color: $background-aside;
+        color: $text-main;
+    }
+
+    input[type="color"] {
+        background-color: transparent;
+    }
+}
+
+@each $themeName, $theme in $themes {
+    main.disc-#{$themeName} {
+        background-color: map-get($theme, background-main);
+        color: map-get($theme, text-main);
+        @include themify($theme);
+    }
+
+    aside.disc-#{$themeName} {
+        background-color: map-get($theme, background-aside);
+        color: map-get($theme, text-main);
+        @include themify($theme);
+    }
+}
