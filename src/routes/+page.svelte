@@ -1,17 +1,24 @@
 <script lang="ts">
     import currentTheme from "$lib/stores/theme";
-    import type EmbedSettings from '$lib/embed';
     import { Theme } from '$lib/embed';
     import savedEmbed from '$lib/stores/embed';
     import { defaultEmbed } from '$lib/embed';
+    import { browser } from "$app/environment";
+    import twemoji from 'twemoji';
+    import { afterUpdate } from "svelte";
+
+    afterUpdate(() => {
+        if (browser) twemoji.parse(mainElement);
+    });
 
 	import Embed from "$lib/components/embed.svelte";
 
     let embed = {...defaultEmbed, ...$savedEmbed};
 
+    let mainElement: HTMLElement;
 </script>
 
-<main class={`${$currentTheme ? "disc-" + $currentTheme : ""}`}>
+<main class={`${$currentTheme ? "disc-" + $currentTheme : ""}`} bind:this={mainElement} >
     <div class="scroller">
         <div class="center"><h1>Profilebuilder ✨</h1></div>
         <p class="center">A simple utility that lets you create fake discord profiles.</p>

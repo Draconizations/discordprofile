@@ -1,27 +1,17 @@
 <script lang="ts">
-    import { browser } from "$app/environment";
-    import twemoji from 'twemoji';
-    import { afterUpdate } from "svelte";
-
-    import theme from "$lib/stores/theme";    
-
-    afterUpdate(() => { 
-        if (browser) twemoji.parse(document.body);
-    });
+    import twemoji from "twemoji";
+    import theme from "$lib/stores/theme";
 
     $: currentTheme = $theme;
     $: themeEmoji = $theme === "dark" ? "🌙" : "☀️";
 
-    function swapTheme(value: string) {
-        theme.set(value)
-    }
 </script>
 
 <footer class={`${$theme ? "disc-" + $theme : ""}`}>
     <div class="row" style="gap: 1rem;">
         <div class="col-3">
-            <label for="theme-picker">Theme {themeEmoji}</label>
-            <select on:change={(e) => swapTheme(e.target.value)}>
+            <label for="theme-picker">Theme {@html twemoji.parse(themeEmoji)}</label>
+            <select bind:value={$theme}>
                 <option value="dark" default={currentTheme === 'dark'}>Dark</option>
                 <option value="light" default={currentTheme === 'light'}>Light</option>
             </select>

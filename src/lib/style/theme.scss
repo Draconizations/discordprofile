@@ -24,10 +24,6 @@ aside {
     background-color: map-get(map-get($themes, "dark"), background-aside);
 }
 
-hr {
-    background-color: rgba(map-get(map-get($themes, "dark"), details), 0.5);
-}
-
 @mixin themify($themeName) {
     $background-main: map-get($themeName, background-main);
     $background-aside: map-get($themeName, background-aside);
@@ -42,6 +38,10 @@ hr {
 
     input[type="color"] {
         background-color: transparent;
+    }
+
+    hr {
+        background-color: rgba($details, 0.2);
     }
 }
 
