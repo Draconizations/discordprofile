@@ -3,6 +3,7 @@ $themes: (
         background-main: #343537,
         background-aside: #151517,
         background-footer: #d2d6dc,
+        text-footer: #151517,
         text-main: #f0f0f0,
         details: #f0f0f0,
     ),
@@ -10,6 +11,7 @@ $themes: (
         background-main: #ffffff,
         background-aside: #d2d6dc,
         background-footer: #343537,
+        text-footer: #d2d6dc,
         text-main: #0c0c0c,
         details: #151517,
     )
@@ -28,6 +30,7 @@ aside {
     $background-main: map-get($themeName, background-main);
     $background-aside: map-get($themeName, background-aside);
     $background-footer: map-get($themeName, background-footer);
+    $text-footer: map-get($themeName, text-footer);
     $text-main: map-get($themeName, text-main);
     $details: map-get($themeName, details);
 
@@ -60,7 +63,7 @@ aside {
 
     footer.disc-#{$themeName} {
         background-color: map-get($theme, background-footer);
-        color: map-get($theme, background-aside);
+        color: map-get($theme, text-footer);
         @include themify($theme);
     }
 }
