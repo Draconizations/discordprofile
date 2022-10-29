@@ -2,6 +2,10 @@
 
 $discord-blurple: #5865f2;
 
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
 html {
     width: 100%;
     min-height: 100%;
@@ -101,6 +105,7 @@ footer {
     padding: 0.75rem;
     display: flex;
     flex-direction: column;
+    z-index: 10;
 }
 
 .embed-container {

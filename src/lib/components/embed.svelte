@@ -4,21 +4,37 @@
 
     export let embed: Embed;
 
-    let themeColors = {
-        darkBackground: "hsl(220,calc(1*6.8%),17.3%)",
-        lightBackground: "hsl(210,calc(1*11.1%),92.9%);"
+    const themeColors = {
+        dark: {
+            background: "hsl(220,calc(1*6.8%),17.3%)",
+            overlay: '#00000099',
+            body: '#00000073',
+        },
+        light: {
+            background: "hsl(210,calc(1*11.1%),92.9%)",
+            overlay: '#ffffff99',
+            body: '#ffffff73'
+        }
     }
 
-    $: colors = {
-        background: embed.theme === Theme.dark ? themeColors.darkBackground : themeColors.lightBackground
+    $: customColors = {
+        primary: embed.colors.primary && isColorValid(embed.colors.primary) ? embed.colors.primary : themeColors[embed.theme.toLowerCase()].background,
+        secondary: embed.colors.secondary && isColorValid(embed.colors.secondary) ? embed.colors.secondary : embed.colors.primary && isColorValid(embed.colors.primary) ? embed.colors.primary : themeColors[embed.theme.toLowerCase()].background,
     }
 
+    function isColorValid(color: string) {
+        if (color.match(/^#(?:[0-9a-f]{3}){1,2}$/i)) return true;
+        else return false;
+    }
 </script>
 
 <div class="embed-body" style={`
-    --profile-gradient-primary-color: ${embed.colors ? embed.colors.primary : colors.background};
-    --profile-gradient-secondary-color: ${embed.colors ? embed.colors.secondary : colors.background};
-    --profile-padding: ${embed.colors ?  "4px" : "0"}
+    --profile-gradient-primary-color: ${customColors.primary};
+    --profile-gradient-secondary-color: ${customColors.secondary};
+    --profile-gradient-overlay-color: ${themeColors[embed.theme.toLowerCase()].overlay};
+    --profile-body-background-color: ${themeColors[embed.theme.toLowerCase()].body};
+
+    --overlay-display: ${embed.colors.primary || embed.colors.secondary ? "block" : "none"};
 `}>
 
 </div>
@@ -29,8 +45,21 @@
         background: linear-gradient(var(--profile-gradient-primary-color), var(--profile-gradient-primary-color) 120px,var(--profile-gradient-secondary-color));
         width: 350px;
         box-shadow: 0 8px 16px hsla(0,calc(1*0%),0%,0.24);
-        padding: var(--profile-padding);
         border-radius: 4px;
-        min-height: 100px;
+        min-height: 500px;
+        position: relative;
+    }
+
+    .embed-body:before {
+        display: var(--overlay-display);
+        border-radius: 4px;
+        left: 4px;
+        top: 4px;
+        height: calc(100% - 8px);
+        width: calc(100% - 8px);
+        content: "";
+        pointer-events: none;
+        background-color: var(--profile-gradient-overlay-color);
+        position: absolute;
     }
 </style>
