@@ -33,6 +33,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "1.0.0-next.46",
 		"discord-markdown": "^2.5.1",
+		"html-to-image": "^1.10.8",
 		"twemoji": "^14.0.2"
 	}
 }

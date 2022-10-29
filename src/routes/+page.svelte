@@ -7,6 +7,7 @@
     import twemoji from 'twemoji';
     import { afterUpdate, onMount } from "svelte";
     import ColorControl from '$lib/components/control/ColorControl.svelte'
+    import { toPng } from 'html-to-image';
 
     let jsEnabled = false;
 
@@ -25,12 +26,36 @@
     $: embed, $savedEmbed = embed;
 
     let mainElement: HTMLElement;
+
+    let imageNode: HTMLElement;
+    let imageOpen = false;
+    let imgDataUrl = "";
+    
+    function convertToImage() {
+        toPng(imageNode, { width: 350 + 2*16})
+        .then(dataUrl => {
+            imgDataUrl = dataUrl;
+            imageOpen = true;
+        })
+    }
+
+    browser && window.addEventListener('keydown', (e) => e.key === 'Escape' ? imageOpen = false : {});
 </script>
 
+{#if imageOpen}
+    <div class={`img-overlay ${$currentTheme ? "disc-" + $currentTheme : ""}`}>
+        <div class="img-container">
+            <img class="img-profile" src={imgDataUrl} alt="Your fake discord profile" download="discord_profile.png" />
+            <p style="text-align: center;">Here's your fake profile! Go ahead and save the image.</p>
+            <button style="width: 10rem;" on:click={() => imageOpen = false}>Exit</button>
+        </div>
+    </div>
+{/if}
 <main class={`${$currentTheme ? "disc-" + $currentTheme : ""}`} bind:this={mainElement}>
     <div class="scroller">
         <div class="center"><h1>Profilebuilder ✨</h1></div>
         <p class="center">A simple utility that lets you create fake discord profiles.</p>
+        <button style="width: 10rem; margin: 0 auto;" on:click={() => convertToImage()}>to image!</button>
         <hr/>
         <h3>Colors</h3>
         <div class="row">
@@ -59,7 +84,9 @@
     {/if}
 </main>
 <aside class={`${$currentTheme ? "disc-" + $currentTheme : ""}`}>
-    <div class="embed-container">
-        <Embed {embed} />
+    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+        <div class="embed-container" bind:this={imageNode}>
+            <Embed {embed} />
+        </div>
     </div>
 </aside>

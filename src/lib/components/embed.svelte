@@ -33,21 +33,30 @@
     --profile-gradient-secondary-color: ${customColors.secondary};
     --profile-gradient-overlay-color: ${themeColors[embed.theme.toLowerCase()].overlay};
     --profile-body-background-color: ${themeColors[embed.theme.toLowerCase()].body};
-
+    
     --overlay-display: ${embed.colors.primary || embed.colors.secondary ? "block" : "none"};
 `}>
-
+    <svg class="embed-banner-svg">
+        <mask id="banner-mask">
+            <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
+            <circle fill="black" cx="58" cy="82" r="46"></circle>
+        </mask>
+        <foreignObject x="0" y="0" width="100%" height="100%" overflow="visible" mask="url(#banner-mask)">
+            <div class="embed-banner">
+            </div>
+        </foreignObject>
+    </svg>
 </div>
 
 <style lang="scss">
     .embed-body {
-        margin: auto;
         background: linear-gradient(var(--profile-gradient-primary-color), var(--profile-gradient-primary-color) 120px,var(--profile-gradient-secondary-color));
-        width: 350px;
+        width: 340px;
         box-shadow: 0 8px 16px hsla(0,calc(1*0%),0%,0.24);
         border-radius: 4px;
         min-height: 500px;
         position: relative;
+        margin: 1rem 1rem 1.5rem 1rem;
     }
 
     .embed-body:before {
@@ -61,5 +70,17 @@
         pointer-events: none;
         background-color: var(--profile-gradient-overlay-color);
         position: absolute;
+    }
+
+    .embed-banner-svg {
+        min-width: calc(340px - 8px);
+        margin: 4px 0 0 4px;
+        height: 90px;
+    }
+
+    .embed-banner {
+        width: 100%;
+        height: 100%;
+        background-color: #888888;
     }
 </style>
