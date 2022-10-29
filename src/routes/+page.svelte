@@ -3,8 +3,11 @@
     import type EmbedSettings from '$lib/embed';
     import { Theme } from '$lib/embed';
     import savedEmbed from '$lib/stores/embed';
+    import { defaultEmbed } from '$lib/embed';
 
-    let embed = $savedEmbed;
+	import Embed from "$lib/components/embed.svelte";
+
+    let embed = {...defaultEmbed, ...$savedEmbed};
 
 </script>
 
@@ -29,5 +32,7 @@
     </div>
 </main>
 <aside class={`${$currentTheme ? "disc-" + $currentTheme : ""}`}>
-
+    <div class="embed-container">
+        <Embed {embed} />
+    </div>
 </aside>
