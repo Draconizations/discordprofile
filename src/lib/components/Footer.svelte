@@ -10,14 +10,27 @@
     });
 
     $: currentTheme = $theme;
+    $: themeEmoji = $theme === "dark" ? "🌙" : "☀️";
 
-    function swapTheme() {
-        if (currentTheme === 'dark') {
-            theme.set('light');
-        } else {
-            theme.set('dark');
-        }
+    function swapTheme(value: string) {
+        theme.set(value)
     }
 </script>
 
-<footer></footer>
+<footer class={`${$theme ? "disc-" + $theme : ""}`}>
+    <div class="row" style="gap: 1rem;">
+        <div class="col-3">
+            <label for="theme-picker">Theme {themeEmoji}</label>
+            <select on:change={(e) => swapTheme(e.target.value)}>
+                <option value="dark" default={currentTheme === 'dark'}>Dark</option>
+                <option value="light" default={currentTheme === 'light'}>Light</option>
+            </select>
+        </div>
+        <div class="col-3">
+        </div>
+        <div class="col-6" style="text-align: right;">
+            <span>This project is not affiliated with discord</span>
+            <span>Source code</span>
+        </div>
+    </div>
+</footer>

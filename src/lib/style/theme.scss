@@ -2,12 +2,14 @@ $themes: (
     "dark": (
         background-main: #494b4e,
         background-aside: #151517,
+        background-footer: #e8e8e8,
         text-main: #f0f0f0,
         details: #f0f0f0,
     ),
     "light": (
         background-main: #ffffff,
         background-aside: #e8e8e8,
+        background-footer: #494b4e,
         text-main: #0c0c0c,
         details: #151517,
     )
@@ -29,6 +31,7 @@ hr {
 @mixin themify($themeName) {
     $background-main: map-get($themeName, background-main);
     $background-aside: map-get($themeName, background-aside);
+    $background-footer: map-get($themeName, background-footer);
     $text-main: map-get($themeName, text-main);
     $details: map-get($themeName, details);
 
@@ -52,6 +55,12 @@ hr {
     aside.disc-#{$themeName} {
         background-color: map-get($theme, background-aside);
         color: map-get($theme, text-main);
+        @include themify($theme);
+    }
+
+    footer.disc-#{$themeName} {
+        background-color: map-get($theme, background-footer);
+        color: map-get($theme, background-aside);
         @include themify($theme);
     }
 }
