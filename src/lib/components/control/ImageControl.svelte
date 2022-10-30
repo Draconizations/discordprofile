@@ -19,7 +19,7 @@
 </script>
 
 <div class="row">
-    <input {id} bind:this={uploadInput} on:change={() => readImage()} type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9"/>
+    <input {id} bind:this={uploadInput} on:change={() => readImage()} type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" class="col-12 col-600-9 col-800-12 col-1000-9"/>
     <div class="col-12 col-600-3 col-800-12 col-1000-3">
         <button on:click={() => imageUrl = ""}>Clear</button>
     </div>
