@@ -6,6 +6,7 @@ $themes: (
         text-footer: #151517,
         text-main: #f0f0f0,
         details: #f0f0f0,
+        links: #447fdd,
     ),
     "light": (
         background-main: #ffffff,
@@ -14,6 +15,7 @@ $themes: (
         text-footer: #d2d6dc,
         text-main: #0c0c0c,
         details: #151517,
+        links: #447fdd,
     )
 );
 
@@ -33,6 +35,7 @@ aside {
     $text-footer: map-get($themeName, text-footer);
     $text-main: map-get($themeName, text-main);
     $details: map-get($themeName, details);
+    $links: map-get($themeName, links);
 
     input, select {
         background-color: $background-aside;
@@ -59,6 +62,14 @@ aside {
     
     button.faded:hover {
         background-color: darken($background-aside, 5%);
+    }
+
+    a {
+        color: $links
+    }
+
+    a:hover {
+        color: darken($links, 10%);
     }
     
 }
