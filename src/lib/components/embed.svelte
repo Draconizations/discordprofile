@@ -34,21 +34,23 @@
     --profile-gradient-overlay-color: ${themeColors[embed.theme.toLowerCase()].overlay};
     --profile-body-background-color: ${themeColors[embed.theme.toLowerCase()].body};
     --profile-banner-image-url: ${embed.banner ? `url(${embed.banner})` : ""};
-    --profile-banner-color: ${embed.colors.banner ? embed.colors.banner : embed.colors.primary ? embed.colors.primary : embed.theme === Theme.dark ? "#d1dae3" : "#7d8696"};
+    --profile-banner-color: ${embed.colors.banner ? embed.colors.banner : embed.colors.secondary ? embed.colors.secondary : embed.colors.primary? embed.colors.primary : embed.theme === Theme.dark ? "#d1dae3" : "#7d8696"};
     
     --banner-height: ${embed.banner ? "120px" : "90px"};
     --overlay-display: ${embed.colors.primary || embed.colors.secondary ? "block" : "none"};
 `}>
-    <svg class="embed-banner-svg">
-        <mask id="banner-mask">
-            <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
-            <circle fill="black" cx="58" cy="{embed.banner ? 112 : 82}" r="46"></circle>
-        </mask>
-        <foreignObject x="0" y="0" width="100%" height="100%" overflow="visible" mask="url(#banner-mask)">
-            <div class="embed-banner">
-            </div>
-        </foreignObject>
-    </svg>
+    <div class="embed-inner">
+        <svg class="embed-banner-svg">
+            <mask id="banner-mask">
+                <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
+                <circle fill="black" cx="58" cy="{embed.banner ? 112 : 82}" r="46"></circle>
+            </mask>
+            <foreignObject x="0" y="0" width="100%" height="100%" overflow="visible" mask="url(#banner-mask)">
+                <div class="embed-banner">
+                </div>
+            </foreignObject>
+        </svg>
+    </div>
 </div>
 
 <style lang="scss">
@@ -56,14 +58,22 @@
         background: linear-gradient(var(--profile-gradient-primary-color), var(--profile-gradient-primary-color) 120px,var(--profile-gradient-secondary-color));
         width: 340px;
         box-shadow: 0 8px 16px hsla(0,calc(1*0%),0%,0.24);
-        border-radius: 4px;
+        border-radius: 8px;
         min-height: 500px;
         position: relative;
         margin: 1rem 1rem 1.5rem 1rem;
         z-index: 5;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .embed-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
 
-    .embed-body:before {
+    .embed-inner:before {
         display: var(--overlay-display);
         border-radius: 4px;
         left: 4px;
