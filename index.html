@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="./_app/immutable/assets/_layout-7742df70.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page-c58c7626.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/start-63a8927e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-0dd48e2c.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-092d1c7b.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-8ef74917.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-a567ee88.js">
+		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.ts-b8ee4d7c.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-1daba58d.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-7373fd16.js"><title>Profilebuilder</title><!-- HEAD_svelte-vhhwys_START --><meta content="Profilebuilder" property="og:title"><meta content="A simple utility that lets you create fake discord profiles. Currently a heavy work in progress!" property="og:description"><meta property="og:image" content="/favicon.png"><meta name="theme-color" content="#FFAC33"><!-- HEAD_svelte-vhhwys_END -->
+	</head>
+	<body>
+		
+
+
+<div class="container">
+<main class="disc-dark"><div class="scroller"><div class="center"><h1>Profilebuilder ✨</h1></div>
+        <p class="center">A simple utility that lets you create fake discord profiles.</p>
+        <div class="row"><div class="col-6" style="align-items: flex-end"><button style="width: 10rem;">Convert to image!</button></div>
+            <div class="col-6" style="align-items: flex-start"><button style="width: 10rem;" class="danger">Reset</button></div></div>
+        <hr>
+        <h3>Colors</h3>
+        <div class="row"><div class="col-6"><label for="embed-theme-select">Theme</label>
+                <select id="embed-theme-select" class="col-12"><option value="Light">Light</option><option value="Dark">Dark</option></select></div>
+            <div class="col-6"><label for="embed-banner-color-select">Banner</label>
+                <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-banner-color-select"><input type="text"></div>
+    <div class="col-12 col-600-3 col-800-12 col-1400-3"><input value="#000000" type="color"></div></div>
+</div></div>
+        <div class="row"><div class="col-6"><label for="embed-color-primary-select">Primary color</label>
+                <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-color-primary-select"><input type="text"></div>
+    <div class="col-12 col-600-3 col-800-12 col-1400-3"><input value="#000000" type="color"></div></div>
+</div>
+            <div class="col-6"><label for="embed-color-secondary-select">Secondary color</label>
+                <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-color-secondary-select"><input type="text"></div>
+    <div class="col-12 col-600-3 col-800-12 col-1400-3"><input value="#000000" type="color"></div></div>
+</div></div>
+        <hr>
+        <h3>Images</h3>
+        <div class="row"><div class="col-12"><label for="embed-avatar-upload">Avatar</label>
+                <div class="row"><input id="embed-avatar-upload" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
+    <div class="col-12 col-600-3 col-800-12 col-1000-3"><button>Clear</button></div></div></div></div>
+        <div class="row"><div class="col-12"><label for="embed-banner-upload">Banner</label>
+                <div class="row"><input id="embed-banner-upload" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
+    <div class="col-12 col-600-3 col-800-12 col-1000-3"><button>Clear</button></div></div></div></div>
+        <hr>
+        <h3>Info</h3>
+        <p>Tba...</p>
+        <div class="row" style="margin-top: 2rem;"><div class="col-6"><label for="export-import-export">Export as json</label>
+                <button id="export-import-export">Export</button></div>
+            <div class="col-6"><label for="export-import-import">Import</label>
+                <input id="export-import-import" type="file" accept="application/JSON">
+                </div></div></div>
+    <h2 class="center" style="margin-bottom: 1rem;">Please enable javascript!</h2>
+    <footer class="disc-dark"><div class="row" style="gap: 1rem;"><div class="col-6"><label for="theme-picker">Change theme <!-- HTML_TAG_START --><img class="emoji" draggable="false" alt="🌙" src="https://twemoji.maxcdn.com/v/14.0.2/72x72/1f319.png"/><!-- HTML_TAG_END --></label>
+            <select><option value="dark" default>Dark</option><option value="light" >Light</option></select></div>
+        <div class="col-12" style="text-align: center;"><span>This project is not affiliated with discord</span>
+            <span>Source code</span></div></div></footer></main>
+<aside class="disc-dark"><div style="flex: 1; display: flex; align-items: center; justify-content: center;"><div class="embed-container"><div class="embed-body svelte-1l612uw" style="
+    --profile-gradient-primary-color: hsl(220,6.8%,17.3%);
+    --profile-gradient-secondary-color: hsl(220,6.8%,17.3%);
+    --profile-gradient-overlay-color: #00000099;
+    --profile-body-background-color: #00000073;
+    --profile-banner-image-url: ;
+    --profile-banner-color: #d1dae3;
+    
+    --banner-height: 60px;
+    --overlay-display: none;
+    --avatar-position: 20px;
+    --banner-margin: 0;
+"><div class="embed-inner svelte-1l612uw"><svg class="embed-banner-svg svelte-1l612uw"><mask id="banner-mask"><rect fill="white" x="0" y="0" width="100%" height="100%"></rect><circle fill="black" cx="62" cy="60" r="46"></circle></mask><foreignObject x="0" y="0" width="100%" height="100%" overflow="visible" mask="url(#banner-mask)"><div class="embed-banner svelte-1l612uw"></div></foreignObject></svg>
+        <div class="embed-avatar-wrapper svelte-1l612uw"><div class="embed-avatar svelte-1l612uw" style="background-color: hsl(210,11.1%,92.9%)"></div></div></div>
+</div></div></div></aside>
+
+</div>
+
+
+		<script type="module" data-sveltekit-hydrate="srt3x4">
+			import { start } from "./_app/immutable/start-63a8927e.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2],
+					params: {},
+					routeId: "/",
+					data: (function(a){return [a,a]}(null)),
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="srt3x4"]').parentNode,
+				trailing_slash: "never"
+			});
+		</script>
+	
+	</body>
+</html>
