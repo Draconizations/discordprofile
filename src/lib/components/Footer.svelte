@@ -9,7 +9,7 @@
 
 <footer class={`${$theme ? "disc-" + $theme : ""}`}>
     <div class="row" style="gap: 1rem;">
-        <div class="col-12">
+        <div class="col-6">
             <label for="theme-picker">Change theme {@html twemoji.parse(themeEmoji)}</label>
             <select bind:value={$theme}>
                 <option value="dark" default={currentTheme === 'dark'}>Dark</option>

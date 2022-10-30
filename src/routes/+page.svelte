@@ -143,7 +143,7 @@
         </div>
         <hr/>
         <h3>Info</h3>
-        <hr/>
+        <p>Tba...</p>
         <div class="row" style="margin-top: 2rem;">
             <div class="col-6">
                 <label for="export-import-export">Export as json</label>
@@ -170,3 +170,11 @@
         </div>
     </div>
 </aside>
+
+<svelte:head>
+    <title>Profilebuilder</title>
+    <meta content="Profilebuilder" property="og:title" />
+    <meta content="A simple utility that lets you create fake discord profiles. Currently a heavy work in progress!" property="og:description" />
+    <meta property="og:image" content="/favicon.png">
+    <meta name="theme-color" content="#FFAC33">
+</svelte:head>
