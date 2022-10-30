@@ -36,7 +36,7 @@
     let imgDataUrl = "";
     
     function convertToImage() {
-        toPng(imageNode, { width: 350 + 2*16})
+        toPng(imageNode)
         .then(dataUrl => {
             imgDataUrl = dataUrl;
             imageOpen = true;
@@ -169,12 +169,13 @@
     <Footer />
 </main>
 <aside class={`${$currentTheme ? "disc-" + $currentTheme : ""}`}>
-    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+    <div class="embed-wrapper">
         <div class="embed-container" bind:this={imageNode}>
             <Embed {embed} />
         </div>
     </div>
 </aside>
+<Footer mobile={true} />
 
 <svelte:head>
     <title>Profilebuilder</title>

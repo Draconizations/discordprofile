@@ -2,12 +2,14 @@
     import twemoji from "twemoji";
     import theme from "$lib/stores/theme";
 
+    export let mobile = false;
+
     $: currentTheme = $theme;
     $: themeEmoji = $theme === "dark" ? "🌙" : "☀️";
 
 </script>
 
-<footer class={`${$theme ? "disc-" + $theme : ""}`}>
+<footer class={`${$theme ? "disc-" + $theme : ""} ${mobile && "mobile"}`}>
     <div class="row" style="gap: 1rem;">
         <div class="col-6">
             <label for="theme-picker">Change theme {@html twemoji.parse(themeEmoji)}</label>

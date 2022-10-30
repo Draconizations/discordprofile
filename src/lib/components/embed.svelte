@@ -42,14 +42,15 @@
     --overlay-display: ${embed.colors.primary || embed.colors.secondary ? "block" : "none"};
     --avatar-position: ${embed.banner ? embed.colors.primary || embed.colors.secondary ? "84px" : "80px" : embed.colors.primary || embed.colors.secondary ? "54px" : "20px"};
     --banner-margin: ${embed.colors.primary || embed.colors.secondary ? "4px 4px 0 4px" : "0"};
+    --banner-border-radius: ${embed.colors.primary || embed.colors.secondary ? "4px 4px 0 0" : "7px 7px 0 0"};
 `}>
     <div class="embed-inner">
-        <svg class="embed-banner-svg">
+        <svg class="embed-banner-svg" viewBox={`0 0 ${embed.colors.primary || embed.colors.secondary ? "332px" : "340px"} ${embed.banner ? "120px" : "90px"}`}>
             <mask id="banner-mask">
                 <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
                 <circle fill="black" cx={58 + (!embed.colors.primary && !embed.colors.secondary ? + 4 : 0)} cy="{embed.banner ? 120 : embed.colors.primary || embed.colors.secondary ? 90 : 60}" r="46"></circle>
             </mask>
-            <foreignObject x="0" y="0" width="100%" height="100%" overflow="visible" mask="url(#banner-mask)">
+            <foreignObject x="0" y="0" width={embed.colors.primary || embed.colors.secondary ? "332px" : "340px"} height={embed.banner ? "120px" : "90px"} overflow="visible" mask="url(#banner-mask)">
                 <div class="embed-banner">
                 </div>
             </foreignObject>
@@ -68,11 +69,11 @@
     .embed-body {
         background: linear-gradient(var(--profile-gradient-primary-color), var(--profile-gradient-primary-color) 120px,var(--profile-gradient-secondary-color));
         width: 340px;
-        box-shadow: 0 8px 16px hsla(0%,0%,0%,0.24);
+        // box-shadow: 0 8px 16px hsla(0%,0%,0%,0.24);
         border-radius: 8px;
         min-height: 500px;
         position: relative;
-        margin: 1rem 1rem 1.5rem 1rem;
+        margin: 10px;
         z-index: 5;
         display: flex;
         flex-direction: column;
@@ -103,7 +104,7 @@
         margin: var(--banner-margin);
         height: var(--banner-height);
         z-index: 10;
-        border-radius: 4px 4px 0 0;
+        border-radius: var(--banner-border-radius);
     }
 
     .embed-banner {
