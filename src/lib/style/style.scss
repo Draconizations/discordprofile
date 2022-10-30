@@ -96,9 +96,17 @@ button {
     padding: 0.5rem;
 }
 
+button.danger {
+    background-color: #ee6262;
+}
+
 button:hover {
     background-color: lighten($discord-blurple, 5%);
     cursor: pointer;
+}
+
+button.danger:hover {
+    background-color: lighten(#ee6262, 5%);
 }
 
 footer {

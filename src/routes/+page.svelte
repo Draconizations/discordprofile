@@ -4,10 +4,13 @@
     import savedEmbed from '$lib/stores/embed';
     import { defaultEmbed } from '$lib/embed';
     import { browser } from "$app/environment";
+
     import twemoji from 'twemoji';
     import { afterUpdate, onMount } from "svelte";
-    import ColorControl from '$lib/components/control/ColorControl.svelte'
     import { toPng } from 'html-to-image';
+
+    import ColorControl from '$lib/components/control/ColorControl.svelte'
+    import ImageControl from '$lib/components/control/ImageControl.svelte'
 
     let jsEnabled = false;
 
@@ -40,6 +43,10 @@
     }
 
     browser && window.addEventListener('keydown', (e) => e.key === 'Escape' ? imageOpen = false : {});
+
+    function resetToDefault() {
+        embed = JSON.parse(JSON.stringify(defaultEmbed));
+    }
 </script>
 
 {#if imageOpen}
@@ -55,17 +62,28 @@
     <div class="scroller">
         <div class="center"><h1>Profilebuilder ✨</h1></div>
         <p class="center">A simple utility that lets you create fake discord profiles.</p>
-        <button style="width: 10rem; margin: 0 auto;" on:click={() => convertToImage()}>to image!</button>
+        <div class="row">
+            <div class="col-6" style="align-items: flex-end">
+                <button style="width: 10rem;" on:click={() => convertToImage()}>Convert to image!</button>
+            </div>
+            <div class="col-6" style="align-items: flex-start">
+                <button style="width: 10rem;" class="danger" on:click={() => resetToDefault()}>Reset</button>
+            </div>
+        </div>
         <hr/>
         <h3>Colors</h3>
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <label for="embed-theme-select">Theme</label>
                 <select id="embed-theme-select" bind:value={embed.theme} class="col-12">
                     {#each Object.keys(Theme) as theme}
                         <option value={Theme[theme]}>{theme[0].toUpperCase() + theme.slice(1)}</option>
                     {/each}
                 </select>
+            </div>
+            <div class="col-6">
+                <label for="embed-banner-color-select">Banner</label>
+                <ColorControl bind:color={embed.colors.banner} id="embed-banner-color-select"/>
             </div>
         </div>
         <div class="row">
@@ -76,6 +94,14 @@
             <div class="col-6">
                 <label for="embed-color-secondary-select">Secondary color</label>
                 <ColorControl bind:color={embed.colors.secondary} id="embed-color-secondary-select"/>
+            </div>
+        </div>
+        <hr/>
+        <h3>Images</h3>
+        <div class="row">
+            <div class="col-12">
+                <label for="embed-banner-upload">Banner</label>
+                <ImageControl id="embed-banner-upload" bind:imageUrl={embed.banner} />
             </div>
         </div>
     </div>

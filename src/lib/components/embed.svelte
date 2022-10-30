@@ -33,13 +33,16 @@
     --profile-gradient-secondary-color: ${customColors.secondary};
     --profile-gradient-overlay-color: ${themeColors[embed.theme.toLowerCase()].overlay};
     --profile-body-background-color: ${themeColors[embed.theme.toLowerCase()].body};
+    --profile-banner-image-url: ${embed.banner ? `url(${embed.banner})` : ""};
+    --profile-banner-color: ${embed.colors.banner ? embed.colors.banner : embed.colors.primary ? embed.colors.primary : embed.theme === Theme.dark ? "#d1dae3" : "#7d8696"};
     
+    --banner-height: ${embed.banner ? "120px" : "90px"};
     --overlay-display: ${embed.colors.primary || embed.colors.secondary ? "block" : "none"};
 `}>
     <svg class="embed-banner-svg">
         <mask id="banner-mask">
             <rect fill="white" x="0" y="0" width="100%" height="100%"></rect>
-            <circle fill="black" cx="58" cy="82" r="46"></circle>
+            <circle fill="black" cx="58" cy="{embed.banner ? 112 : 82}" r="46"></circle>
         </mask>
         <foreignObject x="0" y="0" width="100%" height="100%" overflow="visible" mask="url(#banner-mask)">
             <div class="embed-banner">
@@ -57,6 +60,7 @@
         min-height: 500px;
         position: relative;
         margin: 1rem 1rem 1.5rem 1rem;
+        z-index: 5;
     }
 
     .embed-body:before {
@@ -70,17 +74,22 @@
         pointer-events: none;
         background-color: var(--profile-gradient-overlay-color);
         position: absolute;
+        z-index: -2;
     }
 
     .embed-banner-svg {
         min-width: calc(340px - 8px);
         margin: 4px 0 0 4px;
-        height: 90px;
+        height: var(--banner-height);
+        z-index: 10;
     }
 
     .embed-banner {
         width: 100%;
         height: 100%;
-        background-color: #888888;
+        background-color: var(--profile-banner-color);
+        background-image: var(--profile-banner-image-url);
+        background-size: cover;
+        background-position: center;
     }
 </style>
