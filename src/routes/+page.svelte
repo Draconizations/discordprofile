@@ -4,6 +4,7 @@
     import savedEmbed from '$lib/stores/embed';
     import { defaultEmbed } from '$lib/embed';
     import { browser } from "$app/environment";
+    import Footer from "$lib/components/Footer.svelte";
 
     import twemoji from 'twemoji';
     import { afterUpdate, onMount } from "svelte";
@@ -35,7 +36,7 @@
     let imgDataUrl = "";
     
     function convertToImage() {
-        toPng(imageNode, { width: 350 + 2*16, fetchRequestInit: {headers: {'Access-Control-Allow-Origin': '*'}}})
+        toPng(imageNode, { width: 350 + 2*16})
         .then(dataUrl => {
             imgDataUrl = dataUrl;
             imageOpen = true;
@@ -46,6 +47,36 @@
 
     function resetToDefault() {
         embed = JSON.parse(JSON.stringify(defaultEmbed));
+    }
+
+    function exportProfile() {
+        var a = document.createElement("a");
+        var file = new Blob([JSON.stringify(embed)], {type: 'json'});
+        a.href = URL.createObjectURL(file);
+        a.download = 'profilebuilder_export.json';
+        a.click();
+    }
+
+    let importInput: HTMLInputElement;
+    let importNotValid = false;
+
+    function importProfile() {
+        importNotValid = false;
+
+        if (importInput.files && importInput.files[0]) {
+            let reader = new FileReader();
+
+            reader.addEventListener("load", () => {
+                let data = JSON.parse(reader.result as string);
+                if (data.dprofileVersion) {
+                    embed = {...defaultEmbed, ...data};
+                } else {
+                    importNotValid = true;
+                }
+            })
+
+            reader.readAsText(importInput.files[0]);
+        }
     }
 </script>
 
@@ -110,10 +141,27 @@
                 <ImageControl id="embed-banner-upload" bind:imageUrl={embed.banner} />
             </div>
         </div>
+        <hr/>
+        <h3>Info</h3>
+        <hr/>
+        <div class="row" style="margin-top: 2rem;">
+            <div class="col-6">
+                <label for="export-import-export">Export as json</label>
+                <button id="export-import-export" on:click={() => exportProfile()}>Export</button>
+            </div>
+            <div class="col-6">
+                <label for="export-import-import">Import</label>
+                <input id="export-import-import" bind:this={importInput} on:change={() => importProfile()} type="file" accept="application/JSON"/>
+                {#if importNotValid}
+                    <span style="color: red; font-size: 0.8rem;">Import file isn't valid</span>
+                {/if}
+            </div>
+        </div>
     </div>
     {#if !jsEnabled}
         <h2 class="center" style="margin-bottom: 1rem;">Please enable javascript!</h2>
     {/if}
+    <Footer />
 </main>
 <aside class={`${$currentTheme ? "disc-" + $currentTheme : ""}`}>
     <div style="flex: 1; display: flex; align-items: center; justify-content: center;">

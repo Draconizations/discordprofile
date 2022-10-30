@@ -1,4 +1,5 @@
 export default interface EmbedSettings {
+    dprofileVersion: number,
     theme: Theme,
     colors: {
         primary?: string,
@@ -14,6 +15,7 @@ export enum Theme {
 }
 
 export const defaultEmbed: EmbedSettings = {
+    dprofileVersion: 1,
     theme: Theme.dark,
     colors: {},
     banner: "",

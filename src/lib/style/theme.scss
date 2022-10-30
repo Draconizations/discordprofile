@@ -51,6 +51,16 @@ aside {
         background-color: $background-main;
         color: $text-main;
     }
+
+    button.faded {
+        color: $text-main;
+        background-color:  $background-aside;
+    }
+    
+    button.faded:hover {
+        background-color: darken($background-aside, 5%);
+    }
+    
 }
 
 @each $themeName, $theme in $themes {
