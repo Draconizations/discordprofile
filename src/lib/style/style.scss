@@ -73,7 +73,21 @@ img.emoji {
     width: 1em;
     margin: 0 .05em 0 .1em;
     vertical-align: -0.1em;
- }
+}
+
+.embed-custom-status .emoji {
+    height: 1.2em;
+    width: 1.2em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.3em;
+}
+
+.embed-emoji-status .emoji {
+    height: 48px;
+    width: 48px;
+    margin: 0;
+    vertical-align: 0;
+}
 
 input, select {
     border: none;

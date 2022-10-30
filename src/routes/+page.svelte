@@ -168,7 +168,35 @@
         <details>
             <summary><h3 style="display: inline;">Info</h3></summary>
             <div class="details">
-                <p>Tba...</p>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="embed-info-username">Username</label>
+                        <input type="text" id="embed-info-username" bind:value={embed.info.username} placeholder="main username"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="embed-info-nickname">Nickname</label>
+                        <input type="text" id="embed-info-nickname" bind:value={embed.info.nickname} placeholder="server nickname"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="embed-info-discriminator">Discriminator</label>
+                        <input type="text" id="embed-info-discriminator" bind:value={embed.info.discriminator} placeholder="discord tag"/>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="embed-info-discriminator">Status message</label>
+                        <input type="text" id="embed-info-discriminator" bind:value={embed.info.status} placeholder="discord tag"/>
+                    </div>
+                    <div class="col-12">
+                        <label for="embed-info-emoji">Status emoji</label>
+                        <input type="text" id="embed-info-emoji" bind:value={embed.info.emoji} placeholder="discord tag"/>
+                    </div>
+                    <div class="col-12">
+                        <label for="embed-info-emoji-url">Upload emoji</label>
+                        <ImageControl id="embed-info-emoji-url" bind:imageUrl={embed.info.emoji_url} />
+                    </div>
+                </div>
             </div>
         </details>
         <hr/>
