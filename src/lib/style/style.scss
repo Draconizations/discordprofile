@@ -164,6 +164,13 @@ footer.mobile {
     max-height: 500px;
 }
 
+.details {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
 @media (min-width: 800px) {
     .img-container {
         margin: auto;

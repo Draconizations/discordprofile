@@ -117,49 +117,62 @@
             <span style="color: red; font-size: 0.8rem;">Convert to image failed</span>
         {/if}
         <hr/>
-        <h3>Colors</h3>
-        <div class="row">
-            <div class="col-6">
-                <label for="embed-theme-select">Theme</label>
-                <select id="embed-theme-select" bind:value={embed.theme} class="col-12">
-                    {#each Object.keys(Theme) as theme}
-                        <option value={Theme[theme]}>{theme[0].toUpperCase() + theme.slice(1)}</option>
-                    {/each}
-                </select>
+        <details>
+            <summary><h3 style="display: inline;">Colors</h3></summary>
+            <div class="details">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="embed-theme-select">Theme</label>
+                        <select id="embed-theme-select" bind:value={embed.theme} class="col-12">
+                            {#each Object.keys(Theme) as theme}
+                                <option value={Theme[theme]}>{theme[0].toUpperCase() + theme.slice(1)}</option>
+                            {/each}
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="embed-banner-color-select">Banner</label>
+                        <ColorControl bind:color={embed.colors.banner} id="embed-banner-color-select"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="embed-color-primary-select">Primary color</label>
+                        <ColorControl bind:color={embed.colors.primary} id="embed-color-primary-select"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="embed-color-secondary-select">Secondary color</label>
+                        <ColorControl bind:color={embed.colors.secondary} id="embed-color-secondary-select"/>
+                    </div>
+                </div>
             </div>
-            <div class="col-6">
-                <label for="embed-banner-color-select">Banner</label>
-                <ColorControl bind:color={embed.colors.banner} id="embed-banner-color-select"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <label for="embed-color-primary-select">Primary color</label>
-                <ColorControl bind:color={embed.colors.primary} id="embed-color-primary-select"/>
-            </div>
-            <div class="col-6">
-                <label for="embed-color-secondary-select">Secondary color</label>
-                <ColorControl bind:color={embed.colors.secondary} id="embed-color-secondary-select"/>
-            </div>
-        </div>
+        </details>
         <hr/>
-        <h3>Images</h3>
-        <div class="row">
-            <div class="col-12">
-                <label for="embed-avatar-upload">Avatar</label>
-                <ImageControl id="embed-avatar-upload" bind:imageUrl={embed.avatar} />
+        <details>
+            <summary><h3 style="display: inline;">Images</h3></summary>
+            <div class="details">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="embed-avatar-upload">Avatar</label>
+                        <ImageControl id="embed-avatar-upload" bind:imageUrl={embed.avatar} />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="embed-banner-upload">Banner</label>
+                        <ImageControl id="embed-banner-upload" bind:imageUrl={embed.banner} />
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <label for="embed-banner-upload">Banner</label>
-                <ImageControl id="embed-banner-upload" bind:imageUrl={embed.banner} />
-            </div>
-        </div>
+        </details>
         <hr/>
-        <h3>Info</h3>
-        <p>Tba...</p>
-        <div class="row" style="margin-top: 2rem;">
+        <details>
+            <summary><h3 style="display: inline;">Info</h3></summary>
+            <div class="details">
+                <p>Tba...</p>
+            </div>
+        </details>
+        <hr/>
+        <div class="row" style="margin-top: auto;">
             <div class="col-6">
                 <label for="export-import-export">Export as json</label>
                 <button id="export-import-export" on:click={() => exportProfile()}>Export</button>
