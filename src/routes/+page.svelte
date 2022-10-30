@@ -89,6 +89,14 @@
         </div>
     </div>
 {/if}
+{#if !jsEnabled}
+<div class={`img-overlay ${$currentTheme ? "disc-" + $currentTheme : ""}`}>
+    <div class="img-container">
+        <h1 style="text-align: center;">Please enable javascript</h1>
+        <p style="text-align: center;">Sorry, but this tool will absolutely not work without it!</p>
+    </div>
+</div>
+{/if}
 <main class={`${$currentTheme ? "disc-" + $currentTheme : ""}`} bind:this={mainElement}>
     <div class="scroller">
         <div class="center"><h1>Profilebuilder ✨</h1></div>
@@ -158,9 +166,6 @@
             </div>
         </div>
     </div>
-    {#if !jsEnabled}
-        <h2 class="center" style="margin-bottom: 1rem;">Please enable javascript!</h2>
-    {/if}
     <Footer />
 </main>
 <aside class={`${$currentTheme ? "disc-" + $currentTheme : ""}`}>

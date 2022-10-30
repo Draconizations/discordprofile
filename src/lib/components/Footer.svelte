@@ -18,7 +18,7 @@
         </div>
         <div class="col-12" style="text-align: center;">
             <span>This project is not affiliated with discord</span>
-            <span>Source code</span>
+            <a href="https://github.com/Draconizations/profilebuilder">Source code</a>
         </div>
     </div>
 </footer>
