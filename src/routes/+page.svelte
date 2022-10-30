@@ -106,11 +106,11 @@
         <div class="center"><h1>Profilebuilder ✨</h1></div>
         <p class="center">A simple utility that lets you create fake discord profiles.</p>
         <div class="row">
-            <div class="col-6" style="align-items: flex-end">
-                <button style="width: 10rem;" on:click={() => convertToImage()}>Convert to image!</button>
+            <div class="col-12 col-600-6">
+                <button on:click={() => convertToImage()}>Convert to image!</button>
             </div>
-            <div class="col-6" style="align-items: flex-start">
-                <button style="width: 10rem;" class="danger" on:click={() => resetToDefault()}>Reset</button>
+            <div class="col-12 col-600-6">
+                <button class="danger" on:click={() => resetToDefault()}>Reset</button>
             </div>
         </div>
         {#if imgError}
@@ -173,11 +173,11 @@
         </details>
         <hr/>
         <div class="row" style="margin-top: auto;">
-            <div class="col-6">
+            <div class="col-12 col-600-6">
                 <label for="export-import-export">Export as json</label>
                 <button id="export-import-export" on:click={() => exportProfile()}>Export</button>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-600-6">
                 <label for="export-import-import">Import</label>
                 <input id="export-import-import" bind:this={importInput} on:change={() => importProfile()} type="file" accept="application/JSON"/>
                 {#if importNotValid}
