@@ -34,13 +34,16 @@
     let imageNode: HTMLElement;
     let imageOpen = false;
     let imgDataUrl = "";
+    let imgError = false;
     
-    async function convertToImage() {
-        await toPng(imageNode, { cacheBust: true})
+    function convertToImage() {
+        imgError = false;
+        toPng(imageNode, { cacheBust: true})
         .then(dataUrl => {
             imgDataUrl = dataUrl;
             imageOpen = true;
-        })
+        }).catch(() => imgError = true)
+
     }
 
     browser && window.addEventListener('keydown', (e) => e.key === 'Escape' ? imageOpen = false : {});
@@ -85,6 +88,7 @@
         <div class="img-container">
             <img class="img-profile" src={imgDataUrl} alt="Your fake discord profile" download="discord_profile.png" />
             <p style="text-align: center;">Here's your fake profile! Go ahead and save the image.</p>
+            <p style="text-align: center;">If your added images don't show up: close the window, wait a couple of seconds, and try again. This sometimes happens, especially on safari.</p>
             <button style="width: 10rem;" on:click={() => imageOpen = false}>Exit</button>
         </div>
     </div>
@@ -109,6 +113,9 @@
                 <button style="width: 10rem;" class="danger" on:click={() => resetToDefault()}>Reset</button>
             </div>
         </div>
+        {#if imgError}
+            <span style="color: red; font-size: 0.8rem;">Convert to image failed</span>
+        {/if}
         <hr/>
         <h3>Colors</h3>
         <div class="row">
