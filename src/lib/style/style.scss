@@ -70,21 +70,21 @@ h1, h2, h3, h4, h5, h6, p {
 
 img.emoji {
     height: 1em;
-    width: 1em;
+    width: auto;
     margin: 0 .05em 0 .1em;
     vertical-align: -0.1em;
 }
 
 .embed-custom-status .emoji {
     height: 1.2em;
-    width: 1.2em;
+    width: auto;
     margin: 0 .05em 0 .1em;
     vertical-align: -0.3em;
 }
 
 .embed-emoji-status .emoji {
     height: 48px;
-    width: 48px;
+    width: auto;
     margin: 0;
     vertical-align: 0;
 }
