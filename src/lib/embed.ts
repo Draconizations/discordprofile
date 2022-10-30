@@ -6,6 +6,7 @@ export default interface EmbedSettings {
         banner?: string,
     },
     banner: string,
+    avatar: string,
 }
 
 export enum Theme {
@@ -16,4 +17,5 @@ export const defaultEmbed: EmbedSettings = {
     theme: Theme.dark,
     colors: {},
     banner: "",
+    avatar: "",
 }

@@ -16,18 +16,11 @@
             reader.readAsDataURL(uploadInput.files[0]);
         }
     }
-
-    function setToUrl() {
-        if (textInput && textInput.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/)) {
-            imageUrl = textInput;
-        }
-    }
 </script>
 
 <div class="row">
-    <input {id} bind:this={uploadInput} on:change={() => readImage()} type="file" accept="image/png, image/jpeg" class="col-12 col-600-6 col-800-12 col-1000-6"/>
-    <input bind:value={textInput} on:change={() => setToUrl()} type="url" class="col-6 col-600-4 col-800-6 col-1000-4" placeholder="insert url here..."/>
-    <div class="col-6 col-600-2 col-800-6 col-1000-2">
+    <input {id} bind:this={uploadInput} on:change={() => readImage()} type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9"/>
+    <div class="col-12 col-600-3 col-800-12 col-1000-3">
         <button on:click={() => imageUrl = ""}>Clear</button>
     </div>
 </div>

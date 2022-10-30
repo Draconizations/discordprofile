@@ -35,7 +35,7 @@
     let imgDataUrl = "";
     
     function convertToImage() {
-        toPng(imageNode, { width: 350 + 2*16})
+        toPng(imageNode, { width: 350 + 2*16, fetchRequestInit: {headers: {'Access-Control-Allow-Origin': '*'}}})
         .then(dataUrl => {
             imgDataUrl = dataUrl;
             imageOpen = true;
@@ -98,6 +98,12 @@
         </div>
         <hr/>
         <h3>Images</h3>
+        <div class="row">
+            <div class="col-12">
+                <label for="embed-avatar-upload">Avatar</label>
+                <ImageControl id="embed-avatar-upload" bind:imageUrl={embed.avatar} />
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <label for="embed-banner-upload">Banner</label>
