@@ -175,6 +175,7 @@
     <title>Profilebuilder</title>
     <meta content="Profilebuilder" property="og:title" />
     <meta content="A simple utility that lets you create fake discord profiles. Currently a heavy work in progress!" property="og:description" />
+    <meta content="https://profilebuilder.fulmine.xyz/" property="og:url" />
     <meta property="og:image" content="/favicon.png">
     <meta name="theme-color" content="#FFAC33">
 </svelte:head>
