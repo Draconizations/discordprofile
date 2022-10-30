@@ -35,8 +35,8 @@
     let imageOpen = false;
     let imgDataUrl = "";
     
-    function convertToImage() {
-        toPng(imageNode)
+    async function convertToImage() {
+        await toPng(imageNode, { cacheBust: true})
         .then(dataUrl => {
             imgDataUrl = dataUrl;
             imageOpen = true;
