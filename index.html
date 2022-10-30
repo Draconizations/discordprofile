@@ -5,16 +5,16 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_layout-56c88397.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/_page-6e45a7f8.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/start-48227797.js">
+		<link href="./_app/immutable/assets/_layout-e05287af.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page-be27fa83.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/start-232d4dcd.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index-0dd48e2c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-3aa2be60.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-3342d265.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index-8ef74917.js">
 		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-a567ee88.js">
 		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.ts-b8ee4d7c.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-1daba58d.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-84f30489.js"><title>Profilebuilder</title><!-- HEAD_svelte-8ji4l8_START --><meta content="Profilebuilder" property="og:title"><meta content="A simple utility that lets you create fake discord profiles. Currently a heavy work in progress!" property="og:description"><meta content="https://profilebuilder.fulmine.xyz/" property="og:url"><meta property="og:image" content="/favicon.png"><meta name="theme-color" content="#FFAC33"><!-- HEAD_svelte-8ji4l8_END -->
+		<link rel="modulepreload" href="./_app/immutable/components/pages/_page.svelte-2e2085db.js"><title>Profilebuilder</title><!-- HEAD_svelte-8ji4l8_START --><meta content="Profilebuilder" property="og:title"><meta content="A simple utility that lets you create fake discord profiles. Currently a heavy work in progress!" property="og:description"><meta content="https://profilebuilder.fulmine.xyz/" property="og:url"><meta property="og:image" content="/favicon.png"><meta name="theme-color" content="#FFAC33"><!-- HEAD_svelte-8ji4l8_END -->
 	</head>
 	<body>
 		
@@ -25,59 +25,86 @@
         <p style="text-align: center;">Sorry, but this tool will absolutely not work without it!</p></div></div>
 <main class="disc-dark"><div class="scroller"><div class="center"><h1>Profilebuilder ✨</h1></div>
         <p class="center">A simple utility that lets you create fake discord profiles.</p>
-        <div class="row"><div class="col-6" style="align-items: flex-end"><button style="width: 10rem;">Convert to image!</button></div>
-            <div class="col-6" style="align-items: flex-start"><button style="width: 10rem;" class="danger">Reset</button></div></div>
+        <div class="row"><div class="col-12 col-600-6"><button>Convert to image!</button></div>
+            <div class="col-12 col-600-6"><button class="danger">Reset</button></div></div>
+        
         <hr>
-        <h3>Colors</h3>
-        <div class="row"><div class="col-6"><label for="embed-theme-select">Theme</label>
-                <select id="embed-theme-select" class="col-12"><option value="Light">Light</option><option value="Dark">Dark</option></select></div>
-            <div class="col-6"><label for="embed-banner-color-select">Banner</label>
-                <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-banner-color-select"><input type="text"></div>
+        <details><summary><h3 style="display: inline;">Colors</h3></summary>
+            <div class="details"><div class="row"><div class="col-6"><label for="embed-theme-select">Theme</label>
+                        <select id="embed-theme-select" class="col-12"><option value="Light">Light</option><option value="Dark">Dark</option></select></div>
+                    <div class="col-6"><label for="embed-banner-color-select">Banner</label>
+                        <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-banner-color-select"><input type="text"></div>
     <div class="col-12 col-600-3 col-800-12 col-1400-3"><input value="#000000" type="color"></div></div>
 </div></div>
-        <div class="row"><div class="col-6"><label for="embed-color-primary-select">Primary color</label>
-                <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-color-primary-select"><input type="text"></div>
+                <div class="row"><div class="col-6"><label for="embed-color-primary-select">Primary color</label>
+                        <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-color-primary-select"><input type="text"></div>
     <div class="col-12 col-600-3 col-800-12 col-1400-3"><input value="#000000" type="color"></div></div>
 </div>
-            <div class="col-6"><label for="embed-color-secondary-select">Secondary color</label>
-                <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-color-secondary-select"><input type="text"></div>
+                    <div class="col-6"><label for="embed-color-secondary-select">Secondary color</label>
+                        <div class="row"><div class="col-12 col-600-9 col-800-12 col-1400-9" id="embed-color-secondary-select"><input type="text"></div>
     <div class="col-12 col-600-3 col-800-12 col-1400-3"><input value="#000000" type="color"></div></div>
-</div></div>
+</div></div></div></details>
         <hr>
-        <h3>Images</h3>
-        <div class="row"><div class="col-12"><label for="embed-avatar-upload">Avatar</label>
-                <div class="row"><input id="embed-avatar-upload" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
+        <details><summary><h3 style="display: inline;">Images</h3></summary>
+            <div class="details"><div class="row"><div class="col-12"><label for="embed-avatar-upload">Avatar</label>
+                        <div class="row"><input id="embed-avatar-upload" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
     <div class="col-12 col-600-3 col-800-12 col-1000-3"><button>Clear</button></div></div></div></div>
-        <div class="row"><div class="col-12"><label for="embed-banner-upload">Banner</label>
-                <div class="row"><input id="embed-banner-upload" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
-    <div class="col-12 col-600-3 col-800-12 col-1000-3"><button>Clear</button></div></div></div></div>
+                <div class="row"><div class="col-12"><label for="embed-banner-upload">Banner</label>
+                        <div class="row"><input id="embed-banner-upload" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
+    <div class="col-12 col-600-3 col-800-12 col-1000-3"><button>Clear</button></div></div></div></div></div></details>
         <hr>
-        <h3>Info</h3>
-        <p>Tba...</p>
-        <div class="row" style="margin-top: 2rem;"><div class="col-6"><label for="export-import-export">Export as json</label>
+        <details><summary><h3 style="display: inline;">Info</h3></summary>
+            <div class="details"><div class="row"><div class="col-6"><label for="embed-info-username">Username</label>
+                        <input type="text" id="embed-info-username" placeholder="main username" value="Username"></div>
+                    <div class="col-6"><label for="embed-info-nickname">Nickname</label>
+                        <input type="text" id="embed-info-nickname" placeholder="server nickname" value="Nickname"></div>
+                    <div class="col-6"><label for="embed-info-discriminator">Discriminator</label>
+                        <input type="text" id="embed-info-discriminator" placeholder="discord tag" value="0001"></div></div>
+                <hr>
+                <div class="row"><div class="col-12"><label for="embed-info-discriminator">Status message</label>
+                        <input type="text" id="embed-info-discriminator" placeholder="discord tag" value="status message..."></div>
+                    <div class="col-12"><label for="embed-info-emoji">Status emoji</label>
+                        <input type="text" id="embed-info-emoji" placeholder="discord tag" value="✨"></div>
+                    <div class="col-12"><label for="embed-info-emoji-url">Upload emoji</label>
+                        <div class="row"><input id="embed-info-emoji-url" type="file" accept="image/png, image/jpeg" class="col-12 col-600-9 col-800-12 col-1000-9">
+    <div class="col-12 col-600-3 col-800-12 col-1000-3"><button>Clear</button></div></div></div></div></div></details>
+        <hr>
+        <div class="row" style="margin-top: auto;"><div class="col-12 col-600-6"><label for="export-import-export">Export as json</label>
                 <button id="export-import-export">Export</button></div>
-            <div class="col-6"><label for="export-import-import">Import</label>
+            <div class="col-12 col-600-6"><label for="export-import-import">Import</label>
                 <input id="export-import-import" type="file" accept="application/JSON">
                 </div></div></div>
     <footer class="disc-dark false"><div class="row" style="gap: 1rem;"><div class="col-6"><label for="theme-picker">Change theme <!-- HTML_TAG_START --><img class="emoji" draggable="false" alt="🌙" src="https://twemoji.maxcdn.com/v/14.0.2/72x72/1f319.png"/><!-- HTML_TAG_END --></label>
             <select><option value="dark" default>Dark</option><option value="light" >Light</option></select></div>
         <div class="col-12" style="text-align: center;"><span>This project is not affiliated with discord</span>
             <a href="https://github.com/Draconizations/profilebuilder">Source code</a></div></div></footer></main>
-<aside class="disc-dark"><div class="embed-wrapper"><div class="embed-container"><div class="embed-body svelte-1e5c5ud" style="
+<aside class="disc-dark"><div class="embed-wrapper"><div class="embed-container"><div class="embed-body svelte-cedfpf" style="
     --profile-gradient-primary-color: hsl(220,6.8%,17.3%);
     --profile-gradient-secondary-color: hsl(220,6.8%,17.3%);
     --profile-gradient-overlay-color: #00000099;
     --profile-body-background-color: #00000073;
     --profile-banner-image-url: ;
     --profile-banner-color: #d1dae3;
-    
+
     --banner-height: 60px;
     --overlay-display: none;
     --avatar-position: 20px;
     --banner-margin: 0;
     --banner-border-radius: 7px 7px 0 0;
-"><div class="embed-inner svelte-1e5c5ud"><svg class="embed-banner-svg svelte-1e5c5ud" viewBox="0 0 340px 90px"><mask id="banner-mask"><rect fill="white" x="0" y="0" width="100%" height="100%"></rect><circle fill="black" cx="62" cy="60" r="46"></circle></mask><foreignObject x="0" y="0" width="340px" height="90px" overflow="visible" mask="url(#banner-mask)"><div class="embed-banner svelte-1e5c5ud"></div></foreignObject></svg>
-        <div class="embed-avatar-wrapper svelte-1e5c5ud"><div class="embed-avatar svelte-1e5c5ud" style="background-color: hsl(210,11.1%,92.9%)"></div></div></div>
+
+    --header-primary: hsla(0,0%,100%, 0.975);
+    --header-secondary: hsla(0,0%,100%, 0.65);
+    --divider-color: hsla(0, 0%, 100%, 0.24);
+    --text-normal: hsla(0, 0%, 100%, 0.8);
+"><div class="embed-inner svelte-cedfpf"><svg class="embed-banner-svg svelte-cedfpf" viewBox="0 0 340px 90px"><mask id="banner-mask"><rect fill="white" x="0" y="0" width="100%" height="100%"></rect><circle fill="black" cx="62" cy="60" r="46"></circle></mask><foreignObject x="0" y="0" width="340px" height="90px" overflow="visible" mask="url(#banner-mask)"><div class="embed-banner svelte-cedfpf"></div></foreignObject></svg>
+        <div class="embed-avatar-wrapper svelte-cedfpf"><div class="embed-avatar svelte-cedfpf" style="background-color: #d1dae3"></div></div>
+        <div class="embed-content-container svelte-cedfpf"><div class="embed-nickname svelte-cedfpf"><span>Nickname</span>
+                
+                <br>
+                <span class="embed-username svelte-cedfpf">Username#0001</span></div>
+                <span class="embed-custom-status svelte-cedfpf"><!-- HTML_TAG_START --><img class="emoji" draggable="false" alt="✨" src="https://twemoji.maxcdn.com/v/14.0.2/72x72/2728.png"/><!-- HTML_TAG_END -->
+                        status message...</span>
+            <hr class="svelte-cedfpf"></div></div>
 </div></div></div></aside>
 <footer class="disc-dark mobile"><div class="row" style="gap: 1rem;"><div class="col-6"><label for="theme-picker">Change theme <!-- HTML_TAG_START --><img class="emoji" draggable="false" alt="🌙" src="https://twemoji.maxcdn.com/v/14.0.2/72x72/1f319.png"/><!-- HTML_TAG_END --></label>
             <select><option value="dark" default>Dark</option><option value="light" >Light</option></select></div>
@@ -87,8 +114,8 @@
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="fuh2wr">
-			import { start } from "./_app/immutable/start-48227797.js";
+		<script type="module" data-sveltekit-hydrate="yp789a">
+			import { start } from "./_app/immutable/start-232d4dcd.js";
 
 			start({
 				env: {},
@@ -102,7 +129,7 @@
 					form: null
 				},
 				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="fuh2wr"]').parentNode,
+				target: document.querySelector('[data-sveltekit-hydrate="yp789a"]').parentNode,
 				trailing_slash: "never"
 			});
 		</script>
