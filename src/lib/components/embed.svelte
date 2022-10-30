@@ -68,7 +68,7 @@
     .embed-body {
         background: linear-gradient(var(--profile-gradient-primary-color), var(--profile-gradient-primary-color) 120px,var(--profile-gradient-secondary-color));
         width: 340px;
-        box-shadow: 0 8px 16px hsla(0,0,0,0.24);
+        box-shadow: 0 8px 16px hsla(0%,0%,0%,0.24);
         border-radius: 8px;
         min-height: 500px;
         position: relative;
