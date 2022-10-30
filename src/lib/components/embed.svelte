@@ -1,6 +1,7 @@
 <script lang="ts">
     import type Embed from '$lib/embed';
 	import { Theme } from '$lib/embed';
+	import theme from '$lib/stores/theme';
 
     import toHtml from 'discord-markdown';
 	import twemoji from 'twemoji';
@@ -18,6 +19,7 @@
             headerSecondary: "hsla(0,0%,100%, 0.65)",
             divider: "hsla(0, 0%, 100%, 0.24)",
             textNormal: "hsla(0, 0%, 100%, 0.8)",
+            bannerDefault: "#d1dae3",
         },
         light: {
             background: "hsl(210,11.1%,92.9%)",
@@ -25,8 +27,9 @@
             body: '#ffffff73',
             headerPrimary: "hsla(240,0%,0%, 0.975)",
             headerSecondary: "hsla(0,0%,0%, 0.65)",
-            divider: "hsla(0, 0%, 50%, 0.24)",
+            divider: "hsla(0, 0%, 30%, 0.24)",
             textNormal: "hsla(0, 0%, 0%, 0.8)",
+            bannerDefault: "#7d8696",
         }
     }
 
@@ -49,7 +52,7 @@
     --profile-gradient-overlay-color: ${themeColors[embed.theme.toLowerCase()].overlay};
     --profile-body-background-color: ${themeColors[embed.theme.toLowerCase()].body};
     --profile-banner-image-url: ${embed.banner ? `url(${embed.banner})` : ""};
-    --profile-banner-color: ${embed.colors.banner ? embed.colors.banner : embed.colors.secondary ? embed.colors.secondary : embed.colors.primary? embed.colors.primary : embed.theme === Theme.dark ? "#d1dae3" : "#7d8696"};
+    --profile-banner-color: ${embed.colors.banner ? embed.colors.banner : embed.colors.secondary ? embed.colors.secondary : embed.colors.primary? embed.colors.primary : themeColors[embed.theme.toLowerCase()].bannerDefault};
 
     --banner-height: ${embed.banner ?  "120px" : embed.colors.primary || embed.colors.secondary ? "90px" : "60px"};
     --overlay-display: ${embed.colors.primary || embed.colors.secondary ? "block" : "none"};
@@ -77,7 +80,7 @@
             {#if embed.avatar}
                 <img class="embed-avatar" src={embed.avatar} alt="profile avatar" />
             {:else}
-                <div class="embed-avatar" style={`background-color: ${themeColors[oppositeTheme.toLowerCase()].background}`}></div>
+                <div class="embed-avatar" style={`background-color: ${embed.colors.primary ? embed.colors.primary : embed.colors.secondary ? embed.colors.secondary : embed.colors.banner ? embed.colors.banner : themeColors[embed.theme.toLowerCase()].bannerDefault}`}></div>
             {/if}
         </div>
         <div class="embed-content-container">
